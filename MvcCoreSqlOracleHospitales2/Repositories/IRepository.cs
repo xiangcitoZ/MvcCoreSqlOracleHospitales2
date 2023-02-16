@@ -8,9 +8,9 @@ namespace MvcCoreSqlOracleHospitales.Repositories
 
         Hospital FindHospital(int idhospital);
         void InsertHosp(string nombre, string direccion,
-            string telefono, int numcamas);
+            string telefono, int camas);
         void Update(int idhospital, string nombre, string direccion,
-            string telefono, int numcamas);
+            string telefono, int camas);
         void Delete(int idhospital);
 
 

@@ -1,4 +1,5 @@
-﻿using MvcCoreSqlOracleHospitales2.Models;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using MvcCoreSqlOracleHospitales2.Models;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -29,6 +30,13 @@ using System.Data.SqlClient;
 //    TELEFONO = @telefono, NUM_CAMA = @numcamas where HOSPITAL_COD = @IDHOSPITAL
 
 //go
+
+
+//CREATE PROCEDURE SP_FIND_HOSPITAL(
+//@IDHOSPITAL INT)
+//AS
+//	select * from HOSPITAL where HOSPITAL_COD = @IDHOSPITAL
+//GO
 
 #endregion
 
@@ -75,7 +83,17 @@ namespace MvcCoreSqlOracleHospitales.Repositories
 
         public Hospital FindHospital(int idhospital)
         {
-            throw new NotImplementedException();
+            var consulta = from datos in this.tablaHospital.AsEnumerable()
+                            where datos.Field<int>("HOSPITAL_COD") == idhospital
+                           select new Hospital
+                            {
+                               IdHospital = datos.Field<int>("HOSPITAL_COD"),
+                               Nombre = datos.Field<string>("NOMBRE"),
+                               Direccion = datos.Field<string>("DIRECCION"),
+                               Telefono = datos.Field<string>("TELEFONO"),
+                               Num_Cama = datos.Field<int>("NUM_CAMA")
+                           };
+            return consulta.FirstOrDefault(); 
         }
 
         public List<Hospital> GetHospitales()
@@ -99,7 +117,7 @@ namespace MvcCoreSqlOracleHospitales.Repositories
         }
 
       
-        public void InsertHosp(string nombre, string direccion, string telefono, int numcamas)
+        public void InsertHosp(string nombre, string direccion, string telefono, int camas)
         {
             
             //int maximo = this.GetMaximoHospital();
@@ -111,18 +129,18 @@ namespace MvcCoreSqlOracleHospitales.Repositories
             this.com.Parameters.Add(pamdir);
             SqlParameter pamtel = new SqlParameter("@telefono", telefono);
             this.com.Parameters.Add(pamtel);
-            SqlParameter pamcam = new SqlParameter("@numcamas", numcamas);
+            SqlParameter pamcam = new SqlParameter("@numcamas", camas);
             this.com.Parameters.Add(pamcam);
 
             this.com.CommandType = CommandType.StoredProcedure;
-            this.com.CommandText = "";
+            this.com.CommandText = "SP_INSERT_HOSPITAL";
             this.cn.Open();
             this.com.ExecuteNonQuery();
             this.cn.Close();
             this.com.Parameters.Clear();
         }
 
-        public void Update(int idhospital, string nombre, string direccion, string telefono, int numcamas)
+        public void Update(int idhospital, string nombre, string direccion, string telefono, int camas)
         {
            
             SqlParameter pamid = new SqlParameter("@idhospital", idhospital);
@@ -133,11 +151,11 @@ namespace MvcCoreSqlOracleHospitales.Repositories
             this.com.Parameters.Add(pamdir);
             SqlParameter pamtel = new SqlParameter("@telefono", telefono);
             this.com.Parameters.Add(pamtel);
-            SqlParameter pamcam = new SqlParameter("@numcamas", numcamas);
+            SqlParameter pamcam = new SqlParameter("@numcamas", camas);
             this.com.Parameters.Add(pamcam);
 
             this.com.CommandType = CommandType.StoredProcedure;
-            this.com.CommandText = "";
+            this.com.CommandText = "SP_UPADTE_HOSPITAL";
             this.cn.Open();
             this.com.ExecuteNonQuery();
             this.cn.Close();

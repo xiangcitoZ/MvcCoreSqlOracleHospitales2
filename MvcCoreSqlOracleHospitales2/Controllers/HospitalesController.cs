@@ -38,9 +38,10 @@ namespace MvcCoreSqlOracleHospitales.Controllers
             return RedirectToAction("Index");
         }
        
-        public IActionResult Update()
+        public IActionResult Update(int idhospital)
         {
-            return View();
+            Hospital hospital = this.repo.FindHospital(idhospital);
+            return View(hospital);
         }
 
         [HttpPost]

@@ -3,6 +3,15 @@
     New Hospital
 </h1>
  
+<hr />
+ <a asp-controller="Hospitales"
+                    asp-action="Index"
+
+                    class="btn btn-info">
+                            Volver a Index
+                     </a>
+<hr />
+
 <form method="post">
     <label>Nombre</label>
     <input type="text" name="nombre"
@@ -14,7 +23,7 @@
     <input type="text" name="telefono"
         class="form-control" required/>
     <label> numcamas</label>
-    <input type="text" name="numcamas"
+    <input type="number" name="numcamas"
         class="form-control" required/>
     <button class="btn btn-info">
         Create
