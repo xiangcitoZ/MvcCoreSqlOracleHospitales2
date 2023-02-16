@@ -1,0 +1,88 @@
+﻿
+
+@model List<Hospital>
+
+    <h1 style="color:crimson">
+        Hospital Inyeccion
+    </h1>
+    <hr/>
+
+<a asp-controller="Hospitales"
+        asp-action="Create">
+        New Hospitales
+    </a>
+<hr />
+
+
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th>
+                Id Hospital
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Especialidad
+            </th>
+            <th>
+                Salario
+            </th>
+            <th>
+                Num Cama
+            </th>
+            <th>
+               DETAILS
+            </th>
+            <th>
+                DELETE
+            </th>
+            <th>
+                UPDATE
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Hospital hospital in Model)
+        {
+            <tr>
+                <td>@hospital.IdHospital</td>
+                <td>@hospital.Nombre</td>
+                <td>@hospital.Direccion</td>
+                <td>@hospital.Telefono</td>
+                <td>@hospital.Num_Cama</td>
+
+                <td>
+                    <a asp-controller="Hospitales"
+                    asp-action="Details"
+                    asp-route-idhospital="@hospital.IdHospital"
+                    class="btn btn-info">
+                            DETAILS
+                    </a>
+
+                </td>
+               
+                <td>
+                    <a asp-controller="Hospitales"
+                    asp-action="Delete"
+                    asp-route-idhospital="@hospital.IdHospital"
+                    class="btn btn-danger">
+                            DELETE
+                    </a>
+
+                </td>
+                    <td>
+                    <a asp-controller="Hospitales"
+                    asp-action="Update"
+                    asp-route-idhospital="@hospital.IdHospital"
+                    class="btn btn-warning">
+                               UPDATE
+                        </a>
+
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>

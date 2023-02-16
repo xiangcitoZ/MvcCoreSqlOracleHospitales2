@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcCoreSqlOracleHospitales2", "MvcCoreSqlOracleHospitales2\MvcCoreSqlOracleHospitales2.csproj", "{3880C3C9-2AF6-4B3D-9D85-2D2150477DEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3880C3C9-2AF6-4B3D-9D85-2D2150477DEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3880C3C9-2AF6-4B3D-9D85-2D2150477DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3880C3C9-2AF6-4B3D-9D85-2D2150477DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3880C3C9-2AF6-4B3D-9D85-2D2150477DEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7ADF8FD4-F27C-48B0-8A67-C86474E636BB}
+	EndGlobalSection
+EndGlobal
